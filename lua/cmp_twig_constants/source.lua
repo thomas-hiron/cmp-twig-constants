@@ -11,7 +11,7 @@ local function load_twig()
   for line in result:gmatch("[^\r\n]+") do
     local fqcn, const, value = line:match("(.+): .+ ([A-Za-z0-9_]+) = (.+)")
 
-    value = value == "[" and "Array" or value:gsub(";", "")
+    value = value == "[" and "Array" or value:gsub("[;']", "")
     fqcn = fqcn:gsub("src", "App"):gsub(".php", "")
 
     table.insert(constantItems, {
@@ -19,7 +19,7 @@ local function load_twig()
       insertText = fqcn:gsub("/", "\\\\") .. "::" .. const,
       documentation = {
         kind = 'markdown',
-        value = '_Class_: ' .. fqcn .. '\n_Value_: ' .. value:gsub("'", ""),
+        value = '_Class_: ' .. fqcn .. '\n_Value_: ' .. value,
       }
     })
   end
