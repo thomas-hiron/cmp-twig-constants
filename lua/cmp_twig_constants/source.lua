@@ -36,7 +36,7 @@ function source.new()
 end
 
 function source.get_debug_name()
-  return 'twig'
+  return 'twig_constants'
 end
 
 function source.is_available()
