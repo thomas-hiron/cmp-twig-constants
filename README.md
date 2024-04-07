@@ -34,3 +34,8 @@ The trigger character is a single quote, and the line must contains `constant`.
 ## Configuration
 
 There is no configuration at the moment.
+
+## Todo
+
+- Make sure cursor is between quotes
+- Follow composer autoload
