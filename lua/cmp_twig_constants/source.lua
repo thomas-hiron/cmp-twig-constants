@@ -2,7 +2,7 @@ local source = {}
 
 local constantItems = {}
 
-local function load_twig()
+local function load_twig_constants()
   local handle = io.popen('rg --vimgrep --no-line-number --no-column "public const" src')
   local result = handle:read("*a")
   handle:close()
@@ -25,10 +25,10 @@ local function load_twig()
   end
 
   -- Reload in 60 seconds
-  vim.defer_fn(load_twig, 60000)
+  vim.defer_fn(load_twig_constants, 60000)
 end
 
-load_twig()
+load_twig_constants()
 
 function source.new()
   local self = setmetatable({}, { __index = source })
