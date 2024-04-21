@@ -13,10 +13,12 @@ local function load_twig_constants()
 
     value = value == "[" and "Array" or value:gsub("[;']", "")
     fqcn = fqcn:gsub("src", "App"):gsub(".php", "")
+    local twigFqcn = fqcn:gsub("/", "\\\\") .. "::" .. const
 
     table.insert(constantItems, {
       label = fqcn:gsub(".+/", "") .. "::" .. const,
-      insertText = fqcn:gsub("/", "\\\\") .. "::" .. const,
+      filterText = twigFqcn,
+      insertText = twigFqcn,
       documentation = {
         kind = 'markdown',
         value = '_Class_: ' .. fqcn .. '\n_Value_: ' .. value,
