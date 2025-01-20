@@ -3,7 +3,7 @@ local source = {}
 local constantItems = {}
 
 local function load_twig_constants()
-  local handle = io.popen('rg --vimgrep --no-line-number --no-column --no-messages "public const" src')
+  local handle = io.popen('rg --vimgrep --no-line-number --no-column --no-messages "(public const)|(case [A-Za-z]+ = )" src')
   local result = handle:read("*a")
   handle:close()
 
