@@ -9,11 +9,12 @@ local function load_twig_constants()
 
   constantItems = {}
   for line in result:gmatch("[^\r\n]+") do
-    local fqcn, const, value = line:match("(.+): .+ ([A-Za-z0-9_]+) = (.+)")
+    local fqcn, keywords, const, value = line:match("(.+): (.+) ([A-Za-z0-9_]+) = (.+)")
 
     value = value == "[" and "Array" or value:gsub("[;']", "")
     fqcn = fqcn:gsub("src", "App"):gsub(".php", "")
     local twigFqcn = fqcn:gsub("/", "\\\\") .. "::" .. const
+    local type = keywords:match("case") and "enum" or "constant"
 
     table.insert(constantItems, {
       label = fqcn:gsub(".+/", "") .. "::" .. const,
@@ -21,7 +22,7 @@ local function load_twig_constants()
       insertText = twigFqcn,
       documentation = {
         kind = 'markdown',
-        value = '_Class_: ' .. fqcn .. '\n_Value_: ' .. value,
+        value = '_Class_: ' .. fqcn .. '\n_Value_: ' .. value .. '\n_Type_: ' .. type,
       }
     })
   end
