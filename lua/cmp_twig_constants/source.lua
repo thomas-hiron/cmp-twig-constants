@@ -54,7 +54,7 @@ end
 
 function source.complete(self, request, callback)
   local line = vim.fn.getline('.')
-  local triggers = { 'constant' }
+  local triggers = { 'constant', 'enum' }
   local found = false
 
   -- Trigger only if constant function is present on the line.
