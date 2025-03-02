@@ -1,4 +1,10 @@
 # cmp-twig-constants
+ 
+### ⚠️  This repo has been moved ⚠️
+
+This code has been merged to https://github.com/thomas-hiron/cmp-symfony.
+
+---
 
 [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) source for twig.  
 This plugin autocompletes PHP constants located in src directory for twig.  
